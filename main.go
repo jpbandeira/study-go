@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func Sum(a, b int) int {
@@ -100,11 +101,82 @@ func main() {
 	fmt.Println("a: ", a)
 	// b = a + a -> compiler error = cannot use a + a (type int) as type int32 in assignment
 	b = b + 5 // ok: 5 is a constant
-	fmt.Println("b: " ,b)
+	fmt.Println("b: ", b)
 
 	//So, to do assign attribute a to b, we need to convert this like this
 	b = int32(a + a)
-	fmt.Println("b: " ,b)
+	fmt.Println("b: ", b)
 
-	//continue to Elementary Types
+	// 	Format specifiers#
+	// In format-strings, %d is used as a format specifier for integers (%x or %X can be used for a hexadecimal representation).
+	// The %g is used for float types (%f gives a floating-point, and %e gives a scientific notation).
+	// The %0nd shows an integer with n digits, and a leading 0 is necessary.
+	// The %n.mg represents the number with a precision of m digits and width of n digits.
+	// Instead of g, e and f can also be used. For example, the %5.2e formatting of the value 3.4 gives 3.40e+00.
+
+	var c1 complex64 = 5 + 10i // Declaring complex num (real +imaginary(¡))
+	fmt.Printf("The value is: %v", c1)
+
+	// If re and im are of type float32, a variable c of type complex64 can be made with the function complex:
+	// c = complex(re, im)
+
+	var ch1 byte = 'A'
+	fmt.Printf("\nThe value is: %v\n", ch1)
+	fmt.Printf("The charactere is: %c\n", ch1)
+	var ch2 byte = 65
+	fmt.Printf("The value is: %v\n", ch2)
+	fmt.Printf("The charactere is: %c\n", ch2)
+	var ch3 byte = '\x41'
+	fmt.Printf("The value is: %v\n", ch3)
+	fmt.Printf("The charactere is: %c\n", ch3)
+
+	print()
+
+	// 	There are other two major bitwise operators used for shifting:
+
+	// 	Left shift operator <<
+	// 	Right shift operator >>
+	// 	Assume a holds 10. Let’s see how left shifting by 2 works:
+	// images/1
+	// 	Assume a holds 10. Let’s see how right shifting by 2 works:
+	// images/2
+
+}
+
+func print() {
+	var ch1 int = '\u0041'
+	var ch2 int = '\u03B2'
+	var ch3 int = '\U00101234'
+
+	fmt.Printf("%d - %d - %d\n", ch1, ch2, ch3) // integer
+	fmt.Printf("%c - %c - %c\n", ch1, ch2, ch3) // character
+	fmt.Printf("%X - %X - %X\n", ch1, ch2, ch3) // UTF-8 bytes
+	fmt.Printf("%U - %U - %U", ch1, ch2, ch3)   // UTF-8 code point
+
+	fmt.Printf("\n")
+	fmt.Printf(`This is a raw string \n`)
+	fmt.Printf(` This is a raw string \n`)
+
+	//Prefixes and suffixes#
+	var str string = "This is an example of a string"
+	fmt.Printf("T/F? \nDoes the string \"%s\" have prefix %s? ", str, "Th")
+	fmt.Printf("\n%t\n\n", strings.HasPrefix(str, "Th")) // Finding prefix
+
+	fmt.Printf("Does the string \"%s\" have suffix %s? ", str, "ting")
+	fmt.Printf("\n%t\n\n", strings.HasSuffix(str, "ting"))  // Finding suffix
+	fmt.Printf("\n%t\n\n", strings.HasSuffix(str, "tring")) // Finding suffix
+}
+
+// aliasing type
+type Celsius float32
+type Fahrenheit float32
+
+// Function to convert celsius to fahrenheit
+func toFahrenheit(t Celsius) Fahrenheit {
+
+	celsiusConverted := Fahrenheit(t)
+	var temp Fahrenheit
+	temp = (celsiusConverted * 9 / 5) + 32
+	return temp
+
 }
