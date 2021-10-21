@@ -130,28 +130,14 @@ func main() {
 	fmt.Printf("The value is: %v\n", ch3)
 	fmt.Printf("The charactere is: %c\n", ch3)
 
-	print()
+	var ch11 int = '\u0041'
+	var ch22 int = '\u03B2'
+	var ch33 int = '\U00101234'
 
-	// 	There are other two major bitwise operators used for shifting:
-
-	// 	Left shift operator <<
-	// 	Right shift operator >>
-	// 	Assume a holds 10. Let’s see how left shifting by 2 works:
-	// images/1
-	// 	Assume a holds 10. Let’s see how right shifting by 2 works:
-	// images/2
-
-}
-
-func print() {
-	var ch1 int = '\u0041'
-	var ch2 int = '\u03B2'
-	var ch3 int = '\U00101234'
-
-	fmt.Printf("%d - %d - %d\n", ch1, ch2, ch3) // integer
-	fmt.Printf("%c - %c - %c\n", ch1, ch2, ch3) // character
-	fmt.Printf("%X - %X - %X\n", ch1, ch2, ch3) // UTF-8 bytes
-	fmt.Printf("%U - %U - %U", ch1, ch2, ch3)   // UTF-8 code point
+	fmt.Printf("integer %d - %d - %d\n", ch11, ch22, ch33)        // integer
+	fmt.Printf("character %c - %c - %c\n", ch11, ch22, ch33)      // character
+	fmt.Printf("UTF-8 bytes %X - %X - %X\n", ch11, ch22, ch33)    // UTF-8 bytes
+	fmt.Printf("UTF-8 code point %U - %U - %U", ch11, ch22, ch33) // UTF-8 code point
 
 	fmt.Printf("\n")
 	fmt.Printf(`This is a raw string \n`)
@@ -159,12 +145,64 @@ func print() {
 
 	//Prefixes and suffixes#
 	var str string = "This is an example of a string"
-	fmt.Printf("T/F? \nDoes the string \"%s\" have prefix %s? ", str, "Th")
-	fmt.Printf("\n%t\n\n", strings.HasPrefix(str, "Th")) // Finding prefix
+	fmt.Printf("\n T/F? Does the string \"%s\" have prefix %s? ", str, "Th")
+	fmt.Printf("\n Finding prefix %t", strings.HasPrefix(str, "Th")) // Finding prefix
 
-	fmt.Printf("Does the string \"%s\" have suffix %s? ", str, "ting")
-	fmt.Printf("\n%t\n\n", strings.HasSuffix(str, "ting"))  // Finding suffix
-	fmt.Printf("\n%t\n\n", strings.HasSuffix(str, "tring")) // Finding suffix
+	fmt.Printf("\n Does the string \"%s\" have suffix %s? ", str, "ting")
+	fmt.Printf("\n Finding suffix %t", strings.HasSuffix(str, "ting"))    // Finding suffix
+	fmt.Printf("\n Finding suffix %t\n", strings.HasSuffix(str, "tring")) // Finding suffix
+
+	str = "Hi, I'm Marc, Hi."
+	fmt.Printf("The position of the first instance of\"Marc\" is: ")
+	fmt.Printf("%d\n", strings.Index(str, "Marc")) // Finding first occurence
+	fmt.Printf("The position of the first instance of \"Hi\" is: ")
+	fmt.Printf("%d\n", strings.Index(str, "Hi")) // Finding first occurence
+	fmt.Printf("The position of the last instance of \"Hi\" is: ")
+	fmt.Printf("%d\n", strings.LastIndex(str, "Hi")) // Finding last occurence
+	// In the next exemplo, the word Burger isn't exist in string variable.
+	// So the value returned is -1
+	fmt.Printf("The position of the first instance of\"Burger\" is: ")
+	fmt.Printf("%d\n", strings.Index(str, "Burger"))
+
+	// We can replace the first n occurrences of old in str by new. A cpy of str is returned, and if n is -1, all occurrences are replaced.
+	// strings.Replace(str, old, new string, n int)
+	fmt.Printf("%s\n", strings.Replace(str, "Hi", "teste", 1))
+	fmt.Printf("%s\n", strings.Replace(str, "Hi", "teste", 2))
+	str = "Hi, I'm Marc, Hi, Hi, Hi, Hi."
+	fmt.Printf("%s\n", strings.Replace(str, "Hi", "teste", -1))
+
+	// 	Count counts the number of non-overlapping instances of substring str in s with:
+	// strings.Count(s, str string) int
+	fmt.Printf("Count function: %d\n", strings.Count(str, "Hi"))
+
+	// The Repeat function returns a new string consisting of count copies of the string s:
+	var origS string = "Hi there! "
+	var newS string
+	newS = strings.Repeat(origS, 3) // Repeating origS 3 times
+	fmt.Printf("The new repeated string is: %s\n", newS)
+
+	fmt.Printf("To lower case string is: %s\n", strings.ToLower(str))
+	fmt.Printf("To upper case string is: %s\n", strings.ToUpper(str))
+
+	str = "\nHi, I'm Marc, Hi, Hi, Hi, Hi.\n"
+	fmt.Printf(`NO Trim str from \n in the left and right sid: %s`, str)
+	fmt.Printf("Trim str from second param: %s\n", strings.Trim(str, "\n"))
+
+	str = "Hi Hello OLA"
+	//	strings.Fields(str) split the string with all instances of one or more consecutive with space
+	var splitedString []string = strings.Fields(str)
+	fmt.Println(splitedString)
+
+	// split string with all instances of the second param
+	str = "Hi;Hello;OLA"
+	splitedString = strings.Split(str, ";")
+	fmt.Println(splitedString)
+
+	// Create a new string with all elements from array separeted with the second param
+	fmt.Println(strings.Join(splitedString, ","))
+
+	// CONTINUE FROM TIMES AND DATES
+
 }
 
 // aliasing type
