@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	classe.Examples()
+	//classe.Examples()
 	classe.Examples2()
 }
