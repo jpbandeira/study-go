@@ -5,6 +5,7 @@ import (
 )
 
 func main() {
-	//classe.Examples()
-	classe.Examples2()
+	//classe.BasicConstructsAndElementaryDataTypes()
+	//classe.ControlEstructures()
+	classe.Functions()
 }

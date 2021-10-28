@@ -2,7 +2,7 @@ package classes
 
 import "fmt"
 
-func Examples2() {
+func ControlEstructures() {
 
 	// IF & ELSE EXAMPLES
 

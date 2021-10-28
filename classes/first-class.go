@@ -10,7 +10,7 @@ func Sum(a, b int) int {
 	return a + b
 }
 
-func Examples() {
+func BasicConstructsAndElementaryDataTypes() {
 	fmt.Println(Sum(1, 2))
 	fmt.Println("TEST")
 
