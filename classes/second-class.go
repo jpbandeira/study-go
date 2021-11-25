@@ -64,7 +64,7 @@ func ControlEstructures() {
 
 	usingLabels()
 
-	fmt.Println(teste(-10))	
+	fmt.Println(teste(-10))
 }
 
 func usingLabels() {
@@ -128,8 +128,6 @@ func challengeSeasonOfAMonth(monthNumber int) (season string) {
 func teste(x int) int {
 
 	if x < 0 {
-		fmt.Println()
-		fmt.Println(x)
 		return -x
 	}
 	return x
