@@ -2,6 +2,7 @@ package classes
 
 import (
 	"fmt"
+	"time"
 )
 
 func Functions() {
@@ -123,15 +124,40 @@ func Functions() {
 		fmt.Println(1 + 2)
 	}()
 
-
+	// Returning a function using closures
 	numberIncremented := incrementNumber(1)
-	fmt.Println(numberIncremented(1))
+	fmt.Println(numberIncremented(2))
+
+	// TO calculate the time that a function execute
+	start := time.Now()
+	func() {
+		for i := 0; i < 10000; i++ {
+			//do something
+		}
+	}()
+	end := time.Now()
+	delta := end.Sub(start)
+	fmt.Printf("Calculation took this amount of time: %s\n", delta)
+
+	// A question from a quiz in final of this class
+	printrec(1)
+}
+
+// Returning the values with recursive functions and without say what is the return especificaly
+func printrec(i int) {
+	if i > 10 {
+		return
+	}
+	printrec(i + 1)
+	fmt.Printf("%d ", i)
 }
 
 //We can create a function that use closure function in return statement
 //Example:
 func incrementNumber(a int) func(b int) int {
+	fmt.Println(a)
 	return func(b int) int {
+		fmt.Println(b)
 		return b + a
 	}
 }
